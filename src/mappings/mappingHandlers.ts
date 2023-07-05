@@ -10,6 +10,9 @@ export async function handleEventTransfer(event: SubstrateEvent): Promise<void> 
   logger.info("handleEventTransfer called!")
   
   logger.info("{new event call" + JSON.stringify(event) + "}")
+  if (event.extrinsic === undefined) {
+    return
+  }
   const from = event.event.data[0];
   const to = event.event.data[1];
   const amount = event.event.data[2];
