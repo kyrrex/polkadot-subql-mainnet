@@ -1,6 +1,6 @@
 {
-  "name": "westend_indexer",
-  "version": "0.0.5",
+  "name": "polkadot_indexer",
+  "version": "0.0.6",
   "description": "This subquery project can be used as a simple westend indexer",
   "main": "dist/index.js",
   "scripts": {
