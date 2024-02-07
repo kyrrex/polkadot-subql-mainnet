@@ -1,37 +1,31 @@
+# // Auto-generated , DO NOT EDIT
 specVersion: 1.0.0
-name: westend_indexer
-version: 0.0.5
+version: 0.0.1
+name: polkadot-transfers-indexer
+description: >-
+  This project can be used as a starting point for developing your SubQuery
+  project
 runner:
   node:
-    name: "@subql/node"
-    version: "*"
+    name: '@subql/node'
+    version: '>=3.0.1'
   query:
-    name: "@subql/query"
-    version: "*"
-      # description: This subquery project can be used as a simple westend indexer
-      # repository: "https://github.com/1llusion1st/westend-subql-starter"
+    name: '@subql/query'
+    version: '*'
 schema:
   file: ./schema.graphql
 network:
-  # The genesis hash of the network (hash of block 0)
-  chainId: "0x91b171bb158e2d3848fa23a9f1c25182fb8e20313b2c1eb49219da7a70ce90c3"
-  # This endpoint must be a public non-pruned archive node
-  # Public nodes may be rate limited, which can affect indexing speed
-  # When developing your project we suggest getting a private API key
-  # You can get them from OnFinality for free https://app.onfinality.io
-  # https://documentation.onfinality.io/support/the-enhanced-api-service
-  endpoint: "wss://polkadot.api.onfinality.io/public-ws"
-  # Optionally provide the HTTP endpoint of a full chain dictionary to speed up processing
-  dictionary: "https://api.subquery.network/sq/subquery/polkadot-dictionary"
+  chainId: '0x91b171bb158e2d3848fa23a9f1c25182fb8e20313b2c1eb49219da7a70ce90c3'
+  endpoint:
+    - 'wss://rpc.polkadot.io'
 dataSources:
   - kind: substrate/Runtime
     startBlock: 16192404
-    # startBlock: 16278193
     mapping:
       file: ./dist/index.js
       handlers:
-        - handler: handleEventTransfer
-          kind: substrate/EventHandler
+        - kind: substrate/EventHandler
+          handler: handleEventTransfer
           filter:
             module: balances
             method: Transfer
